@@ -14,15 +14,15 @@ YELLOW = 3
 BLUE = 4
 PURPLE = 5
 CYAN = 6
-GREY = 7
-DARK_GREY = 8
+WHITE = 7
+LIGHT_BLACK = 8
 LIGHT_RED = 9
 LIGHT_GREEN = 10
 LIGHT_YELLOW = 11
 LIGHT_BLUE = 12
 LIGHT_PURPLE = 13
 LIGHT_CYAN = 14
-WHITE = 15
+LIGHT_WHITE = 15
 
 -- Highlight groups reference:
 -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md
@@ -30,8 +30,8 @@ WHITE = 15
 -- cursor line highlighting and line numbers
 hl("CursorLine",            { ctermbg = BLACK })
 hl("CursorLineNr",          { ctermbg = BLACK, ctermfg = WHITE })
-hl("LineNr",                { ctermfg = DARK_GREY })
-hl("EndOfBuffer",           { ctermfg = DARK_GREY })
+hl("LineNr",                { ctermfg = LIGHT_BLACK })
+hl("EndOfBuffer",           { ctermfg = LIGHT_BLACK })
 -- functions
 hl("Function",              { ctermfg = YELLOW })
 hl("@function",             { ctermfg = YELLOW })
@@ -47,7 +47,7 @@ hl("Constant",              { ctermfg = WHITE })
 hl("Identifier",            { ctermfg = WHITE })
 hl("@variable",             { ctermfg = WHITE })
 hl("@variable.builtin",     { ctermfg = WHITE })
-hl("@variable.parameter",   { ctermfg = WHITE })
+hl("@variable.parameter",   { ctermfg = _WHITE })
 hl("@variable.parameter.builtin",{ ctermfg = WHITE })
 hl("@variable.member",      { ctermfg = WHITE })
 hl("@parameter",            { ctermfg = WHITE })
@@ -85,7 +85,7 @@ hl("Number",                { ctermfg = WHITE })
 hl("Boolean",               { ctermfg = WHITE })
 hl("Float",                 { ctermfg = WHITE })
 hl("@string",               { ctermfg = GREEN })
-hl("@string.documentation", { ctermfg = GREY })
+hl("@string.documentation", { ctermfg = WHITE })
 hl("@string.regexp",        { ctermfg = CYAN })
 hl("@string.escape",        { ctermfg = CYAN })
 hl("@string.special",       { ctermfg = CYAN })
@@ -100,13 +100,13 @@ hl("@boolean",              { ctermfg = WHITE })
 -- comments
 hl("TODO",                  { ctermfg = YELLOW })
 hl("SpecialComment",        { ctermfg = WHITE })
-hl("Comment",               { ctermfg = DARK_GREY, italic = true })
-hl("@comment",              { ctermfg = DARK_GREY, italic = true })
-hl("@comment.documentation",{ ctermfg = DARK_GREY, italic = true })
+hl("Comment",               { ctermfg = LIGHT_BLACK, italic = true })
+hl("@comment",              { ctermfg = LIGHT_BLACK, italic = true })
+hl("@comment.documentation",{ ctermfg = LIGHT_BLACK, italic = true })
 hl("@comment.error",        { ctermfg = RED, italic = true })
 hl("@comment.warning",      { ctermfg = YELLOW, italic = true })
 hl("@comment.todo",         { ctermfg = YELLOW, italic = true })
-hl("@comment.note",         { ctermfg = DARK_GREY, italic = true })
+hl("@comment.note",         { ctermfg = LIGHT_BLACK, italic = true })
 -- types
 hl("Type",                  { ctermfg = BLUE })
 hl("StorageClass",          { ctermfg = BLUE })
@@ -169,3 +169,9 @@ hl("@tag",                  { ctermfg = RED })
 hl("@tag.builtin",          { ctermfg = RED })
 hl("@tag.attribute",        { ctermfg = YELLOW })
 hl("@tag.delimiter",        { ctermfg = RED })
+-- diagnostic
+hl("DiagnosticError",       { ctermfg = RED })
+hl("DiagnosticWarn",        { ctermfg = YELLOW })
+hl("DiagnosticInfo",        { ctermfg = LIGHT_GREY})
+hl("DiagnosticHint",        { ctermfg = LIGHT_GREY})
+hl("DiagnosticOk",          { ctermfg = LIGHT_GREY})

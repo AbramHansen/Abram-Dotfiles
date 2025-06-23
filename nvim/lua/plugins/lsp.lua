@@ -39,6 +39,27 @@ return {
     config = function()
         require'lspconfig'.clangd.setup {} -- C/C++
         require'lspconfig'.pyright.setup{} -- Python
+        require'lspconfig'.rust_analyzer.setup{ -- Rust
+            on_attach = function(client, bufnr)vim.lsp.inlay_hint.enable(true, {bufnr = bufnr}) end,
+            settings = {
+                ["rust-analyzer"] = {
+                    imports = {
+                        granularity = {
+                            group = "module",
+                        },
+                        prefix = "self",
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
+                        enable = true
+                    },
+                }
+            }
+        }
 
         vim.diagnostic.config({
             virtual_text = { spacing = 4, prefix = "<--" },
