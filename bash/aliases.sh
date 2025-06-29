@@ -8,8 +8,8 @@ alias vi="nvim"
 alias vim="nvim"
 
 # ls
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -lChAgGF'
+alias la='ls -AF'
 alias l='ls -CF'
 
 # file managment

@@ -29,7 +29,7 @@ LIGHT_WHITE = 15
 
 -- cursor line highlighting and line numbers
 hl("CursorLine",            { ctermbg = BLACK })
-hl("CursorLineNr",          { ctermbg = BLACK, ctermfg = WHITE })
+hl("CursorLineNr",          { ctermbg = BLACK, ctermfg = LIGHT_BLUE })
 hl("LineNr",                { ctermfg = LIGHT_BLACK })
 hl("EndOfBuffer",           { ctermfg = LIGHT_BLACK })
 -- functions
@@ -121,16 +121,6 @@ hl("@attribute.builtin",    { ctermfg = RED })
 hl("@property",             { ctermfg = WHITE })
 hl("@module",               { ctermfg = BLUE })
 hl("@module.builtin",       { ctermfg = BLUE })
--- other
-hl("Error",                 { ctermfg = RED })
-hl("Operator",              { ctermfg = RED })
-hl("Delimiter",             { ctermfg = RED })
-hl("Debug",                 { ctermfg = RED })
-hl("Underlined",            { ctermfg = BLUE })
-hl("@operator",             { ctermfg = RED })
-hl("@punctuation",          { ctermfg = RED })
-hl("@punctuation.bracket",  { ctermfg = WHITE })
-hl("@punctuation.special",  { ctermfg = RED })
 -- preprocessor
 hl("PreProc",               { ctermfg = PURPLE })
 hl("Include",               { ctermfg = PURPLE })
@@ -172,6 +162,18 @@ hl("@tag.delimiter",        { ctermfg = RED })
 -- diagnostic
 hl("DiagnosticError",       { ctermfg = RED })
 hl("DiagnosticWarn",        { ctermfg = YELLOW })
-hl("DiagnosticInfo",        { ctermfg = LIGHT_GREY})
-hl("DiagnosticHint",        { ctermfg = LIGHT_GREY})
-hl("DiagnosticOk",          { ctermfg = LIGHT_GREY})
+hl("DiagnosticInfo",        { ctermfg = BLACK})
+hl("DiagnosticHint",        { ctermfg = BLACK})
+hl("DiagnosticOk",          { ctermfg = BLACK})
+-- other
+hl("Error",                 { ctermfg = RED })
+hl("Operator",              { ctermfg = RED })
+hl("Delimiter",             { ctermfg = RED })
+hl("Debug",                 { ctermfg = RED })
+hl("Underlined",            { ctermfg = BLUE })
+hl("@operator",             { ctermfg = RED })
+hl("@punctuation",          { ctermfg = RED })
+hl("@punctuation.bracket",  { ctermfg = WHITE })
+hl("@punctuation.special",  { ctermfg = RED })
+-- other UI
+hl("ColorColumn",           { ctermbg = BLACK})

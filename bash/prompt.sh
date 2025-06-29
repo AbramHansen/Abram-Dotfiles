@@ -18,13 +18,13 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
 set_prompt() {
     local git_branch="$(__git_ps1 ' (%s)')"
-    PS1="${YELLOW}\u@\h${RESET}:${BLUE}\w${WHITE}${git_branch}${YELLOW}\$ ${RESET}"
+    PS1="${YELLOW}\u@\h${WHITE}:${BLUE}\w${PURPLE}${git_branch}${YELLOW}\$ ${RESET}"
 }
 
 if [ "$color_prompt" = yes ]; then
     PROMPT_COMMAND=set_prompt
 else
-    PS1="\u@\h:\w$(__git_ps1 " (%s)")\$ "
+    PS1="\u@\h:\w\$ "
 fi
 unset color_prompt
 
