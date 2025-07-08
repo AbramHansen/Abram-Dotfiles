@@ -1,3 +1,9 @@
+require("config.vim_options")
+require("config.statusline")
+require("config.cursorline")
+require("config.markdown_fix")
+require("config.no_newline_comment")
+
 vim.cmd("colorscheme termcolors")
 
 -- Set up lazy.nvim if not already installed
@@ -12,8 +18,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- Load lazy.nvim and install plugins
 require("lazy").setup("plugins")
-
-require("config.vim_options")
-require("config.cursorline")
-require("config.markdown_fix")
-require("config.no_newline_comment")

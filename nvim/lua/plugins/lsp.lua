@@ -37,10 +37,27 @@ end
 return {
     "neovim/nvim-lspconfig",
     config = function()
-        require'lspconfig'.clangd.setup {} -- C/C++
-        require'lspconfig'.pyright.setup{} -- Python
+        require'lspconfig'.clangd.setup { -- C/C++
+            on_attach = function(client, bufnr)
+                if client.server_capabilities.documentSymbolProvider then
+                    require("nvim-navic").attach(client, bufnr)
+                end
+            end,
+        }
+        require'lspconfig'.pyright.setup{
+            on_attach = function(client, bufnr)
+                if client.server_capabilities.documentSymbolProvider then
+                    require("nvim-navic").attach(client, bufnr)
+                end
+            end,
+        } -- Python
         require'lspconfig'.rust_analyzer.setup{ -- Rust
-            on_attach = function(client, bufnr)vim.lsp.inlay_hint.enable(true, {bufnr = bufnr}) end,
+            on_attach = function(client, bufnr)
+                vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+                if client.server_capabilities.documentSymbolProvider then
+                    require("nvim-navic").attach(client, bufnr)
+                end
+            end,
             settings = {
                 ["rust-analyzer"] = {
                     imports = {
