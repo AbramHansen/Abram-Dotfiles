@@ -12,7 +12,11 @@ vim.opt.autoindent = true
 vim.opt.shiftround = true
 -- navigation
 vim.opt.number = true
-vim.opt.wrap = false
+vim.opt.wrap = true 
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = ">>  "
+
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 5
 -- other
@@ -22,5 +26,4 @@ vim.o.winborder = "single"
 vim.opt.spell = true
 vim.opt.cmdheight = 0
 vim.o.clipboard = "unnamedplus"
-vim.opt.colorcolumn = "81"
 vim.g.mapleader = " "

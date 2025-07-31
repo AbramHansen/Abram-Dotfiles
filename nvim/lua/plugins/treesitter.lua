@@ -8,7 +8,8 @@ return {
                 "c", "cpp", "python",
                 "lua", "vim", "javascript",
                 "html", "css", "bash",
-                "markdown", "markdown_inline", "asm"
+                "markdown", "markdown_inline", "asm",
+                "vimdoc"
             },
             sync_install = false,
             highlight = { enable = true },

@@ -167,6 +167,7 @@ hl("DiagnosticHint",        { ctermfg = BLACK})
 hl("DiagnosticOk",          { ctermfg = BLACK})
 -- other
 hl("Error",                 { ctermfg = RED })
+hl("NonText",               { ctermfg = BLACK })
 hl("Operator",              { ctermfg = RED })
 hl("Delimiter",             { ctermfg = RED })
 hl("Debug",                 { ctermfg = RED })

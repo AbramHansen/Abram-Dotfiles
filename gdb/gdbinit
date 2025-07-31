@@ -1,0 +1,7 @@
+set disassembly-flavor intel
+set print pretty on
+set print demangle on
+set demangle-style gnu-v3
+set debuginfod enabled on
+
+layout src
