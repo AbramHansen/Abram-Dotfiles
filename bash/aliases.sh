@@ -3,10 +3,11 @@ alias python="python3"
 alias py="python3"
 alias pdb="python3 -m pdb"
 
-# neovim
+# vi
 alias vi="nvim"
 alias vim="nvim"
 alias diff="nvim -d"
+alias bvi='busybox vi -c "set tabstop=4" -c "set autoindent" -c "set expandtab" -c "set ignorecase" -c "set showmatch"'
 
 # ls
 alias ll='ls -lChAgGF'

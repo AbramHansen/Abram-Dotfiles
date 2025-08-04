@@ -4,3 +4,5 @@ source ~/.config/bash/prompt.sh
 source ~/.config/bash/colored-output.sh
 source ~/.config/bash/bash-completion.sh
 source ~/.config/bash/load-system-specifics.sh
+source ~/.config/bash/environment.sh
+source ~/.config/bash/fkill.sh
