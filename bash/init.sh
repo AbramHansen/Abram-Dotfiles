@@ -6,3 +6,4 @@ source ~/.config/bash/bash-completion.sh
 source ~/.config/bash/load-system-specifics.sh
 source ~/.config/bash/environment.sh
 source ~/.config/bash/fkill.sh
+source ~/.config/bash/yazi.sh

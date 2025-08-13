@@ -30,6 +30,7 @@ create_symlink "tmux" ~/.config/tmux
 create_symlink "htop" ~/.config/htop
 create_symlink "gdb" ~/.config/gdb
 create_symlink "git" ~/.config/git
+create_symlink "yazi" ~/.config/yazi
 
 sudo bash -c "$(declare -f create_symlink); create_symlink 'keyd' '/etc/keyd'"
 sudo systemctl restart keyd
