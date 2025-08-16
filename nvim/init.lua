@@ -4,6 +4,7 @@ require("config.cursorline")
 require("config.markdown_fix")
 require("config.no_newline_comment")
 require("config.move_lines")
+require("config.exit")
 
 vim.cmd("colorscheme termcolors")
 

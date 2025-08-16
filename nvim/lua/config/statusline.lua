@@ -75,6 +75,6 @@ local signature = "%{v:lua.function_signature()}"
 local lspLocation = "%{%v:lua.navicLocation()%}"
 local errors = "%#Special#%{v:lua.errors()}%#Normal#"
 local fileInfo = "%m%r%t"
-local fileLocation = "%4l:%02c %3p%%"
+local fileLocation = "%3p%%"
 
 vim.opt.statusline = errors .. fileInfo .. lspLocation .. "%=" .. signature .. "%=" .. fileLocation
