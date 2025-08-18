@@ -72,6 +72,7 @@ function navicLocation()
 end
 
 local signature = "%{v:lua.function_signature()}"
+-- local commandInfo = " %{v:statusmsg}"
 local lspLocation = "%{%v:lua.navicLocation()%}"
 local errors = "%#Special#%{v:lua.errors()}%#Normal#"
 local fileInfo = "%m%r%t"
