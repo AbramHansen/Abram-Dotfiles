@@ -60,7 +60,58 @@ return {
             virt_text_win_col = nil
         })
 
-        local dap = require('dap')
+        dap.adapters.bashdb = {
+            type = 'executable';
+            command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter';
+            name = 'bashdb';
+        }
+
+        dap.configurations.sh = {
+            {
+                type = 'bashdb',
+                request = 'launch',
+                name = "Launch file",
+                showDebugOutput = true,
+                pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb',
+                pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir',
+                trace = true,
+                file = "${file}",
+                program = "${file}",
+                cwd = '${workspaceFolder}',
+                pathCat = "cat",
+                pathBash = "/bin/bash",
+                pathMkfifo = "mkfifo",
+                pathPkill = "pkill",
+                args = {},
+                argsString = '',
+                env = {},
+                terminalKind = "integrated",
+            },
+            {
+                type = 'bashdb',
+                request = 'launch',
+                name = "Launch file with arguments",
+                showDebugOutput = true,
+                pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb',
+                pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir',
+                trace = true,
+                file = "${file}",
+                program = "${file}",
+                cwd = '${workspaceFolder}',
+                pathCat = "cat",
+                pathBash = "/bin/bash",
+                pathMkfifo = "mkfifo",
+                pathPkill = "pkill",
+                argsString = '',
+                env = {},
+                terminalKind = "integrated",
+                args = function()
+                    local args_string = vim.fn.input('Arguments: ')
+                    return vim.split(args_string, " +")
+                end,
+            },
+        }
+
         dap.adapters.codelldb = {
             type = "executable",
             command = "codelldb",
@@ -69,7 +120,6 @@ return {
             -- detached = false,
         }
 
-        local dap = require('dap')
         dap.configurations.c = {
             {
                 name = "Launch file",
@@ -153,18 +203,5 @@ return {
         vim.fn.sign_define('DapLogPoint', { text='L', texthl='String', linehl='', numhl='' })
         vim.fn.sign_define('DapStopped', { text='>', texthl='Changed', linehl='', numhl='' })
         vim.fn.sign_define('DapBreakpointRejected', { text='X', texthl='Removed', linehl='', numhl='' })
-
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = {
-                "dapui_scopes",
-                "dapui_breakpoints", 
-                "dapui_stacks",
-                "dapui_watches",
-                "dapui_console",
-            },
-            callback = function()
-                vim.opt_local.laststatus = 0
-            end,
-        })
     end,
 }
