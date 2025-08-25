@@ -24,6 +24,6 @@ vim.opt.title = true
 vim.o.updatetime = 500
 vim.o.winborder = "single"
 vim.opt.spell = true
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0   
 vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = " "

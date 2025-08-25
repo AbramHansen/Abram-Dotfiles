@@ -94,6 +94,8 @@ return {
         vim.keymap.set('n', 't%', function() goto_definition_in_tmux('h') end, { silent = true, noremap = true })
         vim.keymap.set('n', 't"', function() goto_definition_in_tmux('v') end, { silent = true, noremap = true })
         vim.keymap.set('n', 'tc', function() goto_definition_in_tmux('c') end, { silent = true, noremap = true })
+        
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
 
         -- function signature hints
         vim.keymap.set('i', 'C-s',

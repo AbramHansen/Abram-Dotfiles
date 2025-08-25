@@ -178,3 +178,4 @@ hl("@punctuation.bracket",  { ctermfg = WHITE })
 hl("@punctuation.special",  { ctermfg = RED })
 -- other UI
 hl("ColorColumn",           { ctermbg = BLACK})
+hl("StatusMacro",           { ctermbg = RED })

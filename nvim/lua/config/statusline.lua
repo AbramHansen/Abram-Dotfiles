@@ -71,11 +71,20 @@ function navicLocation()
     end
 end
 
+function registerRecording()
+    local register = vim.fn.reg_recording()
+    if register ~= "" then
+        return " REC @" .. register .. " "
+    end
+
+    return ""
+end
+
 local signature = "%{v:lua.function_signature()}"
--- local commandInfo = " %{v:statusmsg}"
-local lspLocation = "%{%v:lua.navicLocation()%}"
+local register = "%#StatusMacro#%{v:lua.registerRecording()}%#Normal#"
+local lspLocation = "%{v:lua.navicLocation()}"
 local errors = "%#Special#%{v:lua.errors()}%#Normal#"
 local fileInfo = "%m%r%t"
 local fileLocation = "%3p%%"
 
-vim.opt.statusline = errors .. fileInfo .. lspLocation .. "%=" .. signature .. "%=" .. fileLocation
+vim.opt.statusline = errors .. fileInfo .. lspLocation .. "%=" .. register .. signature .. "%=" .. fileLocation
