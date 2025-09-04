@@ -28,3 +28,6 @@ alias fzfp='fzf --color=16 --prompt="" --info=inline-right --multi --bind "ctrl-
 # batcat
 alias batcat="batcat -p --theme base16"
 alias bat="batcat -p --theme base16"
+
+# less
+alias less="less -i --mouse -R --use-color -Ddy -Dub -DEr -DNk -DPc"
