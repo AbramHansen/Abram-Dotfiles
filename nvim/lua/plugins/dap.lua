@@ -13,9 +13,9 @@ return {
         dapui.setup({
             controls = { enabled = false },
             icons = {
-                collapsed = "",
-                current_frame = "->",
-                expanded = ""
+                collapsed = "▶",
+                current_frame = "➤",
+                expanded = "▼"
             },
             layouts = {{
                 elements = {{
@@ -37,7 +37,7 @@ return {
                     elements = {{
                             id = "console",
                         }},
-                    position = "right",
+                    position = "bottom",
                     size = 0.25
                 }
             },
@@ -180,15 +180,14 @@ return {
         end
 
         -- Keybindings
-        vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-        vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
-        vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
-        vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
+        vim.keymap.set('n', '<leader>dr', dap.continue, { desc = 'Debug: Run/Continue' })
+        vim.keymap.set('n', '<Right>', dap.step_over, { desc = 'Debug: Step Over' })
+        vim.keymap.set('n', '<Down>', dap.step_into, { desc = 'Debug: Step Into' })
+        vim.keymap.set('n', '<Up>', dap.step_out, { desc = 'Debug: Step Out' })
         vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
         vim.keymap.set('n', '<leader>B', function()
             dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
         end, { desc = 'Debug: Set Conditional Breakpoint' })
-        vim.keymap.set('n', '<leader>dr', dap.repl.open, { desc = 'Debug: Open REPL' })
         vim.keymap.set('n', '<leader>dl', dap.run_last, { desc = 'Debug: Run Last' })
         vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = 'Debug: Terminate' })
 
