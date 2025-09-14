@@ -178,7 +178,6 @@ hl("@punctuation.bracket",  { ctermfg = WHITE })
 hl("@punctuation.special",  { ctermfg = RED })
 -- other UI
 hl("ColorColumn",           { ctermbg = BLACK})
-hl("StatusMacro",           { ctermbg = RED })
 -- Man page
 hl("manHeader",             { ctermfg = BLUE, bold = true })
 hl("manBold",               { ctermfg = LIGHT_BLUE, bold = true })

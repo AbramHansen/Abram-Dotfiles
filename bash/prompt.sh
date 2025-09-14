@@ -18,8 +18,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
 set_prompt() {
     local git_branch="$(__git_ps1 ' (%s)')"
-    BLINKING_LINE_CURSOR="\[\e[5 q\]"
-    PS1="${YELLOW}\u@\h${WHITE}:${BLUE}\w${PURPLE}${git_branch}${YELLOW}\$ ${RESET}${BLINKING_LINE_CURSOR}"
+    PS1="${YELLOW}\u@\h${WHITE}:${BLUE}\w${PURPLE}${git_branch}${YELLOW}\$ ${RESET}"
 }
 
 if [ "$color_prompt" = yes ]; then

@@ -44,13 +44,13 @@ return {
                 end
             end,
         }
-        require'lspconfig'.pyright.setup{
+        require'lspconfig'.pyright.setup{ -- Python
             on_attach = function(client, bufnr)
                 if client.server_capabilities.documentSymbolProvider then
                     require("nvim-navic").attach(client, bufnr)
                 end
             end,
-        } -- Python
+        }
         require'lspconfig'.rust_analyzer.setup{ -- Rust
             on_attach = function(client, bufnr)
                 vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})

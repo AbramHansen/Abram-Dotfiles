@@ -36,7 +36,7 @@ local function update_signature()
     end)
 end
 
--- Update signature on cursor movement (throttled)
+-- Update signature on cursor movement
 vim.api.nvim_create_autocmd({"CursorMoved", "CursorMovedI"}, {
     callback = function()
         local now = vim.loop.hrtime()
@@ -49,17 +49,22 @@ vim.api.nvim_create_autocmd({"CursorMoved", "CursorMovedI"}, {
 
 function errors()
     if vim.api.nvim_get_mode().mode == "n" then
-        local errors = vim.tbl_count(vim.diagnostic.get(0, {"Error"}))
-        if errors == 1 then
-            return errors .. " ERROR  "
-        elseif errors > 1 then
-            return errors .. " ERRORS "
-        else
-            return ""
+        local errors = vim.tbl_count(vim.diagnostic.get(0, {severity = vim.diagnostic.severity.ERROR}))
+        if errors > 0 then
+            return "⛔ " .. errors .. " "
         end
-    else
-        return ""
     end
+    return ""
+end
+
+function warnings()
+    if vim.api.nvim_get_mode().mode == "n" then
+        local warnings = vim.tbl_count(vim.diagnostic.get(0, {severity = vim.diagnostic.severity.WARN}))
+        if warnings > 0 then
+            return "⚠️ " .. warnings .. " "
+        end
+    end
+    return ""
 end
 
 function navicLocation()
@@ -74,17 +79,18 @@ end
 function registerRecording()
     local register = vim.fn.reg_recording()
     if register ~= "" then
-        return " REC @" .. register .. " "
+        return "REC @" .. register .. " "
     end
 
     return ""
 end
 
 local signature = "%{v:lua.function_signature()}"
-local register = "%#StatusMacro#%{v:lua.registerRecording()}%#Normal#"
+local register = "%#Added#%{v:lua.registerRecording()}%#Normal#"
 local lspLocation = "%{v:lua.navicLocation()}"
-local errors = "%#Special#%{v:lua.errors()}%#Normal#"
+local errors = "%#Removed#%{v:lua.errors()}%#Normal#"
+local warnings = "%#Changed#%{v:lua.warnings()}%#Normal#"
 local fileInfo = "%m%r%t"
 local fileLocation = "%3p%%"
 
-vim.opt.statusline = errors .. fileInfo .. lspLocation .. "%=" .. register .. signature .. "%=" .. fileLocation
+vim.opt.statusline = register .. errors .. warnings .. fileInfo .. lspLocation .. "%=" .. signature .. "%=" .. fileLocation
