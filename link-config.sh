@@ -5,11 +5,11 @@ create_symlink() {
     fi
 
     local abram_dotfiles_dir=$(dirname "$(realpath "$0")")
-    local folder_name="$1"
+    local source_name="$1"
     local destination_path="$2"
 
-    if [ ! -d "$abram_dotfiles_dir/$folder_name" ]; then
-        echo "Error: Folder '$folder_name' does not exist."
+    if [ ! -e "$abram_dotfiles_dir/$source_name" ]; then
+        echo "Error: Folder '$source_name' does not exist."
         return 1
     fi
 
@@ -20,8 +20,8 @@ create_symlink() {
     fi
 
         # Create the symlink
-    ln -s "$abram_dotfiles_dir/$folder_name" "$destination_path"
-    echo "Symlink created: $destination_path -> $abram_dotfiles_dir/$folder_name"
+    ln -s "$abram_dotfiles_dir/$source_name" "$destination_path"
+    echo "Symlink created: $destination_path -> $abram_dotfiles_dir/$source_name"
 }
 
 create_symlink "nvim" ~/.config/nvim
@@ -31,7 +31,7 @@ create_symlink "htop" ~/.config/htop
 create_symlink "gdb" ~/.config/gdb
 create_symlink "git" ~/.config/git
 create_symlink "yazi" ~/.config/yazi
-create_symlink "readline/readline.sh" ~/.inputrc
+create_symlink "readline/inputrc.sh" ~/.inputrc
 
 sudo bash -c "$(declare -f create_symlink); create_symlink 'keyd' '/etc/keyd'"
 sudo systemctl restart keyd
