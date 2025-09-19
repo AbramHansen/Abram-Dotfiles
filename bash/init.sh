@@ -7,3 +7,4 @@ source ~/.config/bash/load-system-specifics.sh
 source ~/.config/bash/environment.sh
 source ~/.config/bash/fkill.sh
 source ~/.config/bash/yazi.sh
+source ~/.config/bash/gropen.sh
