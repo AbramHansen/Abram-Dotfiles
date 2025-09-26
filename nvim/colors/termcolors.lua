@@ -178,8 +178,11 @@ hl("@punctuation.bracket",  { ctermfg = WHITE })
 hl("@punctuation.special",  { ctermfg = RED })
 -- other UI
 hl("ColorColumn",           { ctermbg = BLACK})
+hl("Search",                { ctermbg = LIGHT_BLUE, ctermfg = BLACK })
 -- Man page
 hl("manHeader",             { ctermfg = BLUE, bold = true })
 hl("manBold",               { ctermfg = LIGHT_BLUE, bold = true })
 hl("manSectionHeading",     { NULL ,reverse = true })
 hl("manReference",          { ctermfg = YELLOW })
+-- custom
+hl("searchStatus",          { ctermfg = YELLOW })

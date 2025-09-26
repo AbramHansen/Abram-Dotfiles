@@ -85,12 +85,27 @@ function registerRecording()
     return ""
 end
 
+function searchStatus()
+    local pattern = vim.fn.getreg("/")
+    if pattern == "" then
+        return ""
+    end
+
+    local sc = vim.fn.searchcount({ maxcount = 0 })
+    if sc.total > 0 then
+        return string.format(" /%s [%d/%d] ", pattern, sc.current, sc.total)
+    end
+
+    return ""
+end
+
 local signature = "%{v:lua.function_signature()}"
 local register = "%#Added#%{v:lua.registerRecording()}%#Normal#"
 local lspLocation = "%{v:lua.navicLocation()}"
 local errors = "%#Removed#%{v:lua.errors()}%#Normal#"
 local warnings = "%#Changed#%{v:lua.warnings()}%#Normal#"
 local fileInfo = "%m%r%t"
+local searchStatus = "%#searchStatus#%{%v:lua.searchStatus()%}%#Normal#"
 local fileLocation = "%3p%%"
 
-vim.opt.statusline = register .. errors .. warnings .. fileInfo .. lspLocation .. "%=" .. signature .. "%=" .. fileLocation
+vim.opt.statusline = register .. errors .. warnings .. fileInfo .. lspLocation .. "%=" .. signature .. "%=" .. searchStatus .. fileLocation
