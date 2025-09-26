@@ -37,21 +37,24 @@ end
 return {
     "neovim/nvim-lspconfig",
     config = function()
-        require'lspconfig'.clangd.setup { -- C/C++
+        vim.lsp.enable("clangd")
+        vim.lsp.config("clangd", { -- C/C++
             on_attach = function(client, bufnr)
                 if client.server_capabilities.documentSymbolProvider then
                     require("nvim-navic").attach(client, bufnr)
                 end
             end,
-        }
-        require'lspconfig'.pyright.setup{ -- Python
+        })
+        vim.lsp.enable("pyright")
+        vim.lsp.config("pyright", { -- Python
             on_attach = function(client, bufnr)
                 if client.server_capabilities.documentSymbolProvider then
                     require("nvim-navic").attach(client, bufnr)
                 end
             end,
-        }
-        require'lspconfig'.rust_analyzer.setup{ -- Rust
+        })
+        vim.lsp.enable("rust_analyzer")
+        vim.lsp.config("rust_analyzer", { -- Rust
             on_attach = function(client, bufnr)
                 vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
                 if client.server_capabilities.documentSymbolProvider then
@@ -76,7 +79,7 @@ return {
                     },
                 }
             }
-        }
+        })
 
         vim.diagnostic.config({
             virtual_text = { spacing = 4, prefix = "<--" },
