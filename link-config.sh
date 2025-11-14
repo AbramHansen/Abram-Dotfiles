@@ -19,7 +19,7 @@ create_symlink() {
         rm "$destination_path"
     fi
 
-        # Create the symlink
+    # Create the symlink
     ln -s "$abram_dotfiles_dir/$source_name" "$destination_path"
     echo "Symlink created: $destination_path -> $abram_dotfiles_dir/$source_name"
 }

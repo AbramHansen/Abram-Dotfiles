@@ -2,8 +2,24 @@
 	email = hansenabram@gmail.com
 	name = Abram Hansen
 [credential "https://github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[core]
+    editor = nvim
+    pager = less
+[merge]
+    tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true
+[mergetool]
+    prompt = false
+[diff]
+	tool = nvim
+[difftool "nvim"]
+    cmd = ~/.config/git/nvim-diff.sh "$LOCAL" "$REMOTE"
+[difftool]
+    prompt = false
+[pull]
+	rebase = true
