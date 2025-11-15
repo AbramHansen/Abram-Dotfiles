@@ -3,7 +3,7 @@ require("config.statusline")
 require("config.cursorline")
 require("config.markdown_fix")
 require("config.no_newline_comment")
-require("config.move_lines")
+require("config.keybinds")
 
 vim.cmd("colorscheme termcolors")
 

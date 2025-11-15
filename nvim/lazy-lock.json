@@ -14,5 +14,6 @@
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-ufo": { "branch": "main", "commit": "d31e2a9fd572a25a4d5011776677223a8ccb7e35" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
-  "referencer.nvim": { "branch": "master", "commit": "9348bf5761a4ffa762285737a36e05bf1846eb8a" }
+  "referencer.nvim": { "branch": "master", "commit": "9348bf5761a4ffa762285737a36e05bf1846eb8a" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "c45243dc1f32ac6bcf6068e5300f3b2b237e576a" }
 }
