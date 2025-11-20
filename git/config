@@ -15,6 +15,7 @@
     trustExitCode = true
 [mergetool]
     prompt = false
+    keepBackup = false
 [diff]
 	tool = nvim
 [difftool "nvim"]

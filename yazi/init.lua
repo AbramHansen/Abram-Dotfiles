@@ -11,3 +11,13 @@ function Linemode:size_and_mtime()
 	local size = self._file:size()
 	return string.format("%s %s", size and ya.readable_size(size) or "-", time)
 end
+
+th.git = th.git or {}
+th.git.modified_sign =   "  Modified"
+th.git.staged_sign =     "    Staged"
+th.git.untracked_sign =  " Untracked"
+th.git.ignored_sign =    "   Ignored"
+th.git.deleted_sign =    "   Deleted"
+th.git.updated_sign =    "  Conflict"
+th.git.unmodified_sign = "Unmodified"
+require("git"):setup()
