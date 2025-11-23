@@ -1,10 +1,16 @@
-local function goto_definition_in_tmux(splitType)
+local function goto_definition_location(splitType)
     local params = vim.lsp.util.make_position_params(0, 'utf-16')
 
     vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result)
         if err or not result or vim.tbl_isempty(result) then
-            vim.notify("Definition not found", vim.log.levels.WARN)
+            vim.notify("Definition not found", vim.log.levels.WARN, { timeout = 5000 })
             return
+        end
+        
+        local inTmux = false
+        if vim.fn.getenv('TMUX') ~= vim.NIL then
+            inTmux = true
+            vim.notify("in tmux" , vim.log.levels.WARN, { timeout = 5000 })
         end
 
         local def = result[1]
@@ -16,21 +22,35 @@ local function goto_definition_in_tmux(splitType)
         -- Escape the file path for shell
         local escaped_path = vim.fn.shellescape(filepath)
 
-        local cmd
+        local cmd = ""
         if splitType == 'h' then
-            -- Launch in new horizontal tmux split
-            cmd = string.format("tmux split-window -h 'nvim +%d %s'", line, escaped_path)
+            -- Launch in new horizontal split
+            if inTmux then
+                cmd = string.format("tmux split-window -h 'nvim +%d %s'", line, escaped_path)
+            else
+                vim.cmd("vsplit " .. filepath .. " | " .. line)
+            end
         end
         if splitType == 'v' then
-            -- Launch in new vertical tmux split
-            cmd = string.format("tmux split-window -v 'nvim +%d %s'", line, escaped_path)
+            -- Launch in new vertical split
+            if inTmux then
+                cmd = string.format("tmux split-window -v 'nvim +%d %s'", line, escaped_path)
+            else
+                vim.cmd("split " .. filepath .. " | " .. line)
+            end
         end
         if splitType == 'c' then
             -- Launch in new tmux window 
             cmd = string.format("tmux new-window 'nvim +%d %s'", line, escaped_path)
         end
+        if splitType == 't' then
+            -- Launch in new nvim tab
+            vim.cmd("tabnew " .. filepath .. " | " .. line)
+        end
 
-        os.execute(cmd)
+        if cmd ~= "" then
+            os.execute(cmd)
+        end
     end)
 end
 
@@ -94,9 +114,10 @@ return {
             end,
         })
 
-        vim.keymap.set('n', 't%', function() goto_definition_in_tmux('h') end, { silent = true, noremap = true })
-        vim.keymap.set('n', 't"', function() goto_definition_in_tmux('v') end, { silent = true, noremap = true })
-        vim.keymap.set('n', 'tc', function() goto_definition_in_tmux('c') end, { silent = true, noremap = true })
+        vim.keymap.set('n', 't%', function() goto_definition_location('h') end, { silent = true, noremap = true })
+        vim.keymap.set('n', 't"', function() goto_definition_location('v') end, { silent = true, noremap = true })
+        vim.keymap.set('n', 'tc', function() goto_definition_location('c') end, { silent = true, noremap = true })
+        vim.keymap.set('n', 'tt', function() goto_definition_location('t') end, { silent = true, noremap = true })
         
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
 

@@ -186,3 +186,7 @@ hl("manSectionHeading",     { NULL ,reverse = true })
 hl("manReference",          { ctermfg = YELLOW })
 -- custom
 hl("searchStatus",          { ctermfg = YELLOW })
+-- tabs
+hl("TabLine",               { ctermfg = LIGHT_BLACK })
+hl("TabLineSel",            { ctermfg = BLUE, underline = true })
+hl("TabLineFill",           { ctermfg = BLUE })
