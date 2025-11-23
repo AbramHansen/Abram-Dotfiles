@@ -3,9 +3,9 @@ function Linemode:size_and_mtime()
 	if time == 0 then
 		time = ""
 	elseif os.date("%Y", time) == os.date("%Y") then
-		time = os.date("%b %d %I:%M %p", time)
+		time = os.date("%m/%d %H:%M", time)
 	else
-		time = os.date("%b %d %Y", time)
+		time = os.date("%m/%d/%Y", time)
 	end
 
 	local size = self._file:size()
@@ -21,3 +21,19 @@ th.git.deleted_sign =    "   Deleted"
 th.git.updated_sign =    "  Conflict"
 th.git.unmodified_sign = "Unmodified"
 require("git"):setup()
+
+-- Store the original layout function
+local original_layout = Tab.layout
+
+-- Override it to check width
+Tab.layout = function(self)
+    local width = self._area.w
+    local threshold = 80
+    
+    if width < threshold then
+        require("toggle-pane"):entry("min-preview")
+    end
+    
+    -- Call original layout function
+    original_layout(self)
+end
