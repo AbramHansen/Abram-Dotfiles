@@ -14,10 +14,6 @@ return {
         defaults = {
             borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
         },
-        -- mappings = {
-        --     i = { ["<CR>"] = actions.select_tab, },
-        --     n = { ["<CR>"] = actions.select_tab, },
-        -- },
         pickers = {
             find_files = {
                 hidden = true,
