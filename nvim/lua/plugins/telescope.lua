@@ -9,33 +9,33 @@ return {
         vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>tc', builtin.git_bcommits, { desc = 'Telescope help tags' })
         vim.keymap.set('v', '<leader>ts', builtin.grep_string, { desc = 'Telescope string grep' })
-    end,
-    require('telescope').setup{
-        defaults = {
-            borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
-        },
-        pickers = {
-            find_files = {
-                hidden = true,
-                get_selection_window = function ()
-                    vim.cmd("tabnew")
-                    return vim.api.nvim_get_current_win()
-                end,
+        require('telescope').setup{
+            defaults = {
+                borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
             },
-            live_grep = {
-                hidden = true,
-                get_selection_window = function ()
-                    vim.cmd("tabnew")
-                    return vim.api.nvim_get_current_win()
-                end,
-            },
-            grep_string = {
-                hidden = true,
-                get_selection_window = function ()
-                    vim.cmd("tabnew")
-                    return vim.api.nvim_get_current_win()
-                end,
-            },
+            pickers = {
+                find_files = {
+                    hidden = true,
+                    get_selection_window = function ()
+                        vim.cmd("tabnew")
+                        return vim.api.nvim_get_current_win()
+                    end,
+                },
+                live_grep = {
+                    hidden = true,
+                    get_selection_window = function ()
+                        vim.cmd("tabnew")
+                        return vim.api.nvim_get_current_win()
+                    end,
+                },
+                grep_string = {
+                    hidden = true,
+                    get_selection_window = function ()
+                        vim.cmd("tabnew")
+                        return vim.api.nvim_get_current_win()
+                    end,
+                },
+            }
         }
-    }
+    end,
 }
