@@ -50,8 +50,16 @@ return {
             },
 
             on_attach = function(bufnr)
-                vim.keymap.set('n', 'gh', require("gitsigns").preview_hunk_inline)
-            end
+                vim.keymap.set('n', '<leader>gh', require("gitsigns").preview_hunk_inline)
+                vim.keymap.set('n', '<leader>gr', require("gitsigns").reset_hunk)
+                vim.keymap.set('n', '<leader>gn', function()
+                    require("gitsigns").nav_hunk('next')
+                end)
+                vim.keymap.set('n', '<leader>gN', function()
+                    require("gitsigns").nav_hunk('prev')
+                end)
+                vim.keymap.set('n', '<leader>gb', require("gitsigns").toggle_current_line_blame)
+            end,
         }
     end
 }
