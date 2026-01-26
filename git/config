@@ -22,5 +22,3 @@
     cmd = ~/.config/git/nvim-diff.sh "$LOCAL" "$REMOTE"
 [difftool]
     prompt = false
-[pull]
-	rebase = true
