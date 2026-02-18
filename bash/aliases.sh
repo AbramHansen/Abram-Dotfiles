@@ -8,7 +8,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias diff="nvim -d"
 alias bvi='busybox vi -c "set tabstop=4" -c "set autoindent" -c "set expandtab" -c "set ignorecase" -c "set showmatch"'
-fdiff="nvim -d $(find . -maxdepth 1 -type f | fzf)
+alias fdiff='nvim -d $(find . -maxdepth 1 -type f | fzf)'
 
 # ls
 alias ll='ls -lChAgGF'
