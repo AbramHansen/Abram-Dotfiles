@@ -36,3 +36,6 @@ alias less="less -i --mouse -R --use-color -Ddy -Dub -DEr -DNk -DPc"
 # grep
 alias grep="grep -i"
 alias rg="rg --ignore-case"
+
+# other
+alias c="clear"
