@@ -17,29 +17,49 @@ return {
                 current_frame = "➤",
                 expanded = "▼"
             },
-            layouts = {{
-                elements = {{
-                        id = "scopes",
-                        size = 0.40
-                    },{
-                        id = "breakpoints",
-                        size = 0.20
-                    },{
-                        id = "stacks",
-                        size = 0.20
-                    },{
-                        id = "watches",
-                        size = 0.20
-                    }},
-                position = "left",
-                size = 0.25 
-            },{
-                    elements = {{
-                            id = "console",
-                        }},
+            layouts = {
+                {
+                    elements = {
+                        {
+                            id = "disassembly",
+                            size = 0.40
+                        },
+                        {
+                            id = "breakpoints",
+                            size = 0.20
+                        },
+                        {
+                            id = "stacks",
+                            size = 0.20
+                        },
+                        {
+                            id = "watches",
+                            size = 0.20
+                        }
+                    },
+                    position = "left",
+                    size = 0.25
+                },
+                {
+                    elements = {
+                        {
+                            id = "scopes",
+                            size = 1.0
+                        }
+                    },
                     position = "bottom",
                     size = 0.25
-                }
+                },
+                {
+                    elements = {
+                        {
+                            id = "console",
+                            size = 1.0
+                        }
+                    },
+                    position = "top",
+                    size = 0.25
+                },
             },
         })
 
@@ -115,9 +135,6 @@ return {
         dap.adapters.codelldb = {
             type = "executable",
             command = "codelldb",
-
-            -- On windows you may have to uncomment this:
-            -- detached = false,
         }
 
         dap.configurations.c = {
@@ -180,16 +197,17 @@ return {
         end
 
         -- Keybindings
-        vim.keymap.set('n', '<leader>dr', dap.continue, { desc = 'Debug: Run/Continue' })
-        vim.keymap.set('n', '<Right>', dap.step_over, { desc = 'Debug: Step Over' })
-        vim.keymap.set('n', '<Down>', dap.step_into, { desc = 'Debug: Step Into' })
-        vim.keymap.set('n', '<Up>', dap.step_out, { desc = 'Debug: Step Out' })
+        vim.keymap.set('n', '<f5>', dap.continue, { desc = 'Debug: Run/Continue' })
+        vim.keymap.set('n', '<f6>', dap.terminate, { desc = 'Debug: Terminate' })
+        vim.keymap.set('n', '<f7>', dap.down, { desc = 'Debug: Go down in the call stack' })
+        vim.keymap.set('n', '<f8>', dap.up, { desc = 'Debug: Go up in the call stack' })
+        vim.keymap.set('n', '<f10>', dap.step_over, { desc = 'Debug: Step Over' })
+        vim.keymap.set('n', '<f11>', dap.step_into, { desc = 'Debug: Step Into' })
+        vim.keymap.set('n', '<f12>', dap.step_out, { desc = 'Debug: Step Out' })
         vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
         vim.keymap.set('n', '<leader>B', function()
             dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
         end, { desc = 'Debug: Set Conditional Breakpoint' })
-        vim.keymap.set('n', '<leader>dl', dap.run_last, { desc = 'Debug: Run Last' })
-        vim.keymap.set('n', '<leader>dt', dap.terminate, { desc = 'Debug: Terminate' })
 
         -- DAP UI keybindings
         vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Debug: Toggle UI' })

@@ -101,8 +101,34 @@ return {
             }
         })
 
+        vim.lsp.enable("lua_ls")
+        vim.lsp.config("lua_ls", {
+            on_attach = function(client, bufnr)
+                if client.server_capabilities.documentSymbolProvider then
+                    require("nvim-navic").attach(client, bufnr)
+                end
+            end,
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = "LuaJIT",
+                    },
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = vim.api.nvim_get_runtime_file("", true),
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
+        })
+
         vim.diagnostic.config({
-            virtual_text = { spacing = 4, prefix = "<--" },
+            virtual_text = { spacing = 2, prefix = "<-" },
             signs = false,
             underline = true,
             update_in_insert = false,

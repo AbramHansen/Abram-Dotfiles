@@ -16,24 +16,12 @@ return {
             pickers = {
                 find_files = {
                     hidden = true,
-                    get_selection_window = function ()
-                        vim.cmd("tabnew")
-                        return vim.api.nvim_get_current_win()
-                    end,
                 },
                 live_grep = {
                     hidden = true,
-                    get_selection_window = function ()
-                        vim.cmd("tabnew")
-                        return vim.api.nvim_get_current_win()
-                    end,
                 },
                 grep_string = {
                     hidden = true,
-                    get_selection_window = function ()
-                        vim.cmd("tabnew")
-                        return vim.api.nvim_get_current_win()
-                    end,
                 },
             }
         }
