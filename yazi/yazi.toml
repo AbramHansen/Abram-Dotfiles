@@ -12,15 +12,15 @@ image_quality = 90
 
 [opener]
 edit = [
-	{ run = '$EDITOR "$@"', block = true, for = "unix" }
+	{ run = '$EDITOR "%s"', block = true, for = "unix" }
 ]
 
 [[plugin.prepend_fetchers]]
-id   = "git"
-name = "*"
-run  = "git"
+url   = "*"
+run   = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
-id   = "git"
-name = "*/"
-run  = "git"
+url   = "*/"
+run   = "git"
+group = "git"
