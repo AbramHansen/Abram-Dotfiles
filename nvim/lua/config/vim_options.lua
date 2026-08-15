@@ -26,5 +26,4 @@ vim.o.winborder = "single"
 vim.opt.spell = true
 vim.opt.cmdheight = 0   
 vim.o.clipboard = "unnamedplus"
-vim.g.clipboard = "wl-copy"
 vim.g.mapleader = " "
