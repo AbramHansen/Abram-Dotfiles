@@ -18,10 +18,6 @@ return {
        ensure_installed = {
             "lua_ls",
             "clangd",
-            "bash-debug-adapter",
-            "bash-language-server",
-            "codelldb",
-            "tree-sitter-cli"
         }
     }
 }
